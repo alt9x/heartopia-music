@@ -100,13 +100,23 @@ h1{
     padding:20px;
 }
 
-/* 卡片（已升級：呼吸 + 浮動） */
+/* 🔥 卡片：縮小成專輯大小 */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+    margin-top:30px;
+    justify-items:center;
+}
+
 .card{
     background:#1e293b;
     border-radius:16px;
-    overflow:hidden;
     padding:10px;
     text-align:center;
+
+    width:180px;
+    max-width:180px;
 
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
@@ -114,42 +124,42 @@ h1{
     transition:0.3s;
 }
 
-/* hover 卡片 */
+/* hover */
 .card:hover{
-    transform:translateY(-10px) scale(1.03) rotate(1deg);
+    transform:translateY(-8px) scale(1.03);
     box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
 /* 呼吸 */
 @keyframes cardFloat{
     0%{transform:translateY(0px);}
-    50%{transform:translateY(-4px);}
+    50%{transform:translateY(-3px);}
     100%{transform:translateY(0px);}
 }
 
-/* 黑膠 */
+/* 🎧 黑膠（精緻化） */
 .vinyl-img{
-    width:160px;
-    height:160px;
+    width:150px;
+    height:150px;
     object-fit:cover;
     border-radius:50%;
     display:block;
-    margin:10px auto;
+    margin:8px auto;
 
     box-shadow:
-        0 0 15px rgba(0,0,0,0.8),
-        0 0 20px rgba(88,101,242,0.2);
+        0 0 12px rgba(0,0,0,0.8),
+        0 0 18px rgba(88,101,242,0.25);
 
     animation: spin 6s linear infinite;
     transition:0.3s;
 }
 
-/* hover 加速 */
+/* hover 加速 + 發光 */
 .card:hover .vinyl-img{
-    animation: spin 2.5s linear infinite;
+    animation: spin 2.2s linear infinite;
     box-shadow:
-        0 0 25px rgba(88,101,242,0.6),
-        0 0 40px rgba(88,101,242,0.3);
+        0 0 25px rgba(88,101,242,0.7),
+        0 0 45px rgba(88,101,242,0.3);
 }
 
 /* 旋轉 */
@@ -158,24 +168,16 @@ h1{
     to{transform:rotate(360deg);}
 }
 
-/* grid */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:15px;
-    margin-top:30px;
-}
-
 /* 文字 */
 .card h3{
-    margin:8px 0 4px 0;
-    font-size:14px;
+    margin:6px 0 2px 0;
+    font-size:13px;
 }
 
 .card p{
     margin:0;
     color:#94a3b8;
-    font-size:12px;
+    font-size:11px;
 }
 
 /* 按鈕 */
