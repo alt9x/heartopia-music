@@ -14,7 +14,7 @@ body{
     overflow:hidden;
 }
 
-/* 🌈 背景漸層 */
+/* 背景 */
 body::before{
     content:"";
     position:fixed;
@@ -34,29 +34,29 @@ body::before{
 }
 
 /* 星空 */
-#particles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
+#particles{
+    position:fixed;
+    width:100%;
+    height:100%;
     top:0;
     left:0;
-    z-index: -2;
+    z-index:-2;
     pointer-events:none;
 }
 
-.particle {
+.particle{
     position:absolute;
     width:4px;
     height:4px;
-    background: rgba(255,255,255,0.8);
+    background:rgba(255,255,255,0.8);
     border-radius:50%;
     animation: floatUp linear infinite;
 }
 
-@keyframes floatUp {
-    0% {transform: translateY(100vh); opacity:0;}
+@keyframes floatUp{
+    0%{transform:translateY(100vh);opacity:0;}
     20%{opacity:1;}
-    100% {transform: translateY(-10vh); opacity:0;}
+    100%{transform:translateY(-10vh);opacity:0;}
 }
 
 /* 滑鼠光點 */
@@ -72,7 +72,7 @@ body::before{
     z-index:999;
 }
 
-/* 內容層 */
+/* 內容 */
 body > *:not(#particles):not(#cursorGlow){
     position:relative;
     z-index:1;
@@ -100,47 +100,70 @@ h1{
     padding:20px;
 }
 
-/* 🔥 修正：卡片變小（重點） */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:15px;
-    margin-top:30px;
-}
-
-/* 卡片縮緊 */
+/* 卡片（已升級：呼吸 + 浮動） */
 .card{
     background:#1e293b;
     border-radius:16px;
     overflow:hidden;
-    transition:0.3s;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
     padding:10px;
     text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+    animation: cardFloat 6s ease-in-out infinite;
+    transition:0.3s;
 }
 
+/* hover 卡片 */
 .card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-10px) scale(1.03) rotate(1deg);
     box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* 🎧 黑膠 */
+/* 呼吸 */
+@keyframes cardFloat{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-4px);}
+    100%{transform:translateY(0px);}
+}
+
+/* 黑膠 */
 .vinyl-img{
-    width:160px;      /* 🔥 縮小 */
+    width:160px;
     height:160px;
     object-fit:cover;
     border-radius:50%;
     display:block;
     margin:10px auto;
 
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:
+        0 0 15px rgba(0,0,0,0.8),
+        0 0 20px rgba(88,101,242,0.2);
 
     animation: spin 6s linear infinite;
+    transition:0.3s;
 }
 
+/* hover 加速 */
+.card:hover .vinyl-img{
+    animation: spin 2.5s linear infinite;
+    box-shadow:
+        0 0 25px rgba(88,101,242,0.6),
+        0 0 40px rgba(88,101,242,0.3);
+}
+
+/* 旋轉 */
 @keyframes spin{
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
+}
+
+/* grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
+    margin-top:30px;
 }
 
 /* 文字 */
@@ -165,7 +188,6 @@ h1{
     border-radius:12px;
     text-decoration:none;
     font-size:18px;
-    transition:0.3s;
 }
 
 .button:hover{
@@ -216,7 +238,7 @@ footer{
     </div>
 
     <div style="text-align:center;">
-        <a class="button glow" href="https://discord.gg/FNrNgZyvrt" target="_blank">
+        <a class="button" href="https://discord.gg/FNrNgZyvrt" target="_blank">
             🎵 加入 Discord 許願唱片
         </a>
     </div>
