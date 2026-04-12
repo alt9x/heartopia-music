@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Heartopia Music Hub</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+header{
+    padding:60px 20px;
+}
+
+h1{
+    font-size:48px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#1e293b;
+    border-radius:12px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.card img{
+    width:100%;
+}
+
+.card h3{
+    margin:10px;
+}
+
+.author{
+    color:#94a3b8;
+    margin-bottom:15px;
+}
+
+.discord{
+    margin-top:60px;
+}
+
+.button{
+    display:inline-block;
+    background:#5865F2;
+    color:white;
+    padding:15px 35px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:20px;
+}
+
+footer{
+    margin-top:80px;
+    padding:20px;
+    color:#64748b;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Heartopia Music Hub</h1>
+<p class="subtitle">玩家自製唱片展示｜免費分享</p>
+</header>
+
+<div class="container">
+
+<h2>我的唱片作品</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="record1.jpg">
+<h3>APT</h3>
+<p class="author">作者：Alt_9x</p>
+</div>
+
+<div class="card">
+<img src="record2.jpg">
+<h3>漩渦人生</h3>
+<p class="author">作者：Alt_9x</p>
+</div>
+
+</div>
+
+
+<div class="discord">
+<h2>更多作品</h2>
+<p>加入 Discord 取得更多 Heartopia 唱片</p>
+
+<a class="button" href="https://discord.gg/你的連結" target="_blank">
+加入 Discord
+</a>
+
+</div>
+
+</div>
+
+<footer>
+Heartopia Player Community
+</footer>
+
+</body>
+</html>
