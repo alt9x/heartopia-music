@@ -4,16 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Heartopia 唱片專賣</title>
-.glow{
-    box-shadow: 0 0 15px #5865F2;
-    animation: pulse 2s infinite;
-}
 
-@keyframes pulse{
-    0% { box-shadow: 0 0 10px #5865F2; }
-    50% { box-shadow: 0 0 25px #5865F2; }
-    100% { box-shadow: 0 0 10px #5865F2; }
-}
 <style>
 body{
     margin:0;
@@ -98,6 +89,20 @@ h1{
     transform:scale(1.05);
 }
 
+/* 🔥 發光效果 */
+.glow{
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px #5865F2;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0% { box-shadow: 0 0 10px #5865F2; }
+    50% { box-shadow: 0 0 25px #5865F2; }
+    100% { box-shadow: 0 0 10px #5865F2; }
+}
+
 /* 區塊標題 */
 .section-title{
     margin-top:50px;
@@ -120,7 +125,7 @@ footer{
 <body>
 
 <header>
-    <h1>Heartopia Music</h1>
+    <h1>Heartopia 唱片專賣</h1>
     <p class="subtitle">玩家自製唱片展示 · 免費分享 · 社群交流</p>
 </header>
 
@@ -153,7 +158,7 @@ footer{
 </div>
 
 <footer>
-    Heartopia Music 
+    Heartopia 唱片專賣
 </footer>
 
 </body>
