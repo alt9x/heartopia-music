@@ -14,7 +14,7 @@ body{
     overflow:hidden;
 }
 
-/* 🌈 背景漸層慢慢變色 */
+/* 🌈 背景漸層 */
 body::before{
     content:"";
     position:fixed;
@@ -33,7 +33,7 @@ body::before{
     100%{background-position:0% 50%}
 }
 
-/* ✨ 星空 */
+/* 星空 */
 #particles {
     position: fixed;
     width: 100%;
@@ -59,7 +59,7 @@ body::before{
     100% {transform: translateY(-10vh); opacity:0;}
 }
 
-/* 🖱️ 滑鼠光點 */
+/* 滑鼠光點 */
 #cursorGlow{
     position:fixed;
     width:20px;
@@ -72,7 +72,7 @@ body::before{
     z-index:999;
 }
 
-/* 內容 */
+/* 內容層 */
 body > *:not(#particles):not(#cursorGlow){
     position:relative;
     z-index:1;
@@ -100,20 +100,23 @@ h1{
     padding:20px;
 }
 
-/* 卡片 */
+/* 🔥 修正：卡片變小（重點） */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:15px;
     margin-top:30px;
 }
 
+/* 卡片縮緊 */
 .card{
     background:#1e293b;
     border-radius:16px;
     overflow:hidden;
     transition:0.3s;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    padding:10px;
+    text-align:center;
 }
 
 .card:hover{
@@ -121,19 +124,17 @@ h1{
     box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* 🎧 黑膠圖片（重點改這裡） */
+/* 🎧 黑膠 */
 .vinyl-img{
-    width:220px;
-    height:220px;
+    width:160px;      /* 🔥 縮小 */
+    height:160px;
     object-fit:cover;
     border-radius:50%;
     display:block;
     margin:10px auto;
 
-    /* 黑膠感 */
-    box-shadow:0 0 25px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
 
-    /* 旋轉 */
     animation: spin 6s linear infinite;
 }
 
@@ -144,12 +145,14 @@ h1{
 
 /* 文字 */
 .card h3{
-    margin:10px;
+    margin:8px 0 4px 0;
+    font-size:14px;
 }
 
 .card p{
-    margin:0 10px 15px;
+    margin:0;
     color:#94a3b8;
+    font-size:12px;
 }
 
 /* 按鈕 */
@@ -226,7 +229,6 @@ Heartopia 唱片展示
 
 <script>
 
-/* 星空 */
 const p = document.getElementById("particles");
 
 for(let i=0;i<80;i++){
@@ -240,7 +242,6 @@ for(let i=0;i<80;i++){
     p.appendChild(dot);
 }
 
-/* 滑鼠光點 */
 const glow = document.getElementById("cursorGlow");
 
 document.addEventListener("mousemove",(e)=>{
