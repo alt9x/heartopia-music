@@ -4,7 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Heartopia 唱片專賣</title>
+.glow{
+    box-shadow: 0 0 15px #5865F2;
+    animation: pulse 2s infinite;
+}
 
+@keyframes pulse{
+    0% { box-shadow: 0 0 10px #5865F2; }
+    50% { box-shadow: 0 0 25px #5865F2; }
+    100% { box-shadow: 0 0 10px #5865F2; }
+}
 <style>
 body{
     margin:0;
@@ -136,7 +145,7 @@ footer{
     </div>
 
     <div style="text-align:center;">
-        <a class="button" href="https://discord.gg/FNrNgZyvrt" target="_blank">
+        <a class="button glow" href="https://discord.gg/FNrNgZyvrt" target="_blank">
             🎵 加入 Discord 可以許願唱片
         </a>
     </div>
