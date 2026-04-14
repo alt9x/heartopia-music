@@ -46,9 +46,9 @@ body::before{
 
 .particle{
     position:absolute;
-    width:2px;
-    height:2px;
-    background:rgba(255,255,255,0.6);
+    width:4px;
+    height:4px;
+    background:rgba(255,255,255,0.8);
     border-radius:50%;
     animation: floatUp linear infinite;
 }
@@ -62,8 +62,8 @@ body::before{
 /* 滑鼠光點 */
 #cursorGlow{
     position:fixed;
-    width:14px;
-    height:14px;
+    width:20px;
+    height:20px;
     background:rgba(88,101,242,0.8);
     border-radius:50%;
     pointer-events:none;
@@ -75,67 +75,81 @@ body::before{
 /* header */
 header{
     text-align:center;
-    padding:50px 20px 20px;
+    padding:70px 20px 40px;
 }
 
 h1{
-    font-size:32px;
-    margin-bottom:8px;
+    font-size:42px;
+    margin-bottom:10px;
 }
 
 .subtitle{
     color:#94a3b8;
-    font-size:12px;
 }
 
 /* container */
 .container{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
-    padding:10px;
+    padding:20px;
 }
 
-/* ⭐ GRID（更密） */
+/* ⭐作品排列修正 */
 .grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-    gap:8px;
-    margin-top:15px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:30px;
 }
 
-/* 卡片（超緊湊） */
+/* 卡片 */
 .card{
     background:#1e293b;
-    border-radius:10px;
-    padding:4px;
+    border-radius:16px;
+    padding:10px;
     text-align:center;
-    box-shadow:0 6px 14px rgba(0,0,0,0.25);
-    transition:0.2s;
+
+    width:180px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+    animation: cardFloat 6s ease-in-out infinite;
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:scale(1.05);
-    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* 黑膠（核心：縮小） */
+@keyframes cardFloat{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-3px);}
+    100%{transform:translateY(0px);}
+}
+
+/* 黑膠 */
 .vinyl-img{
-    width:88px;
-    height:88px;
+    width:150px;
+    height:150px;
     object-fit:cover;
     border-radius:50%;
     display:block;
-    margin:4px auto;
+    margin:8px auto;
 
     box-shadow:
-        0 0 8px rgba(0,0,0,0.6),
-        0 0 12px rgba(88,101,242,0.2);
+        0 0 12px rgba(0,0,0,0.8),
+        0 0 18px rgba(88,101,242,0.25);
 
     animation: spin 6s linear infinite;
 }
 
 .card:hover .vinyl-img{
-    animation: spin 2.5s linear infinite;
+    animation: spin 2.2s linear infinite;
+    box-shadow:
+        0 0 25px rgba(88,101,242,0.7),
+        0 0 45px rgba(88,101,242,0.3);
 }
 
 @keyframes spin{
@@ -143,44 +157,49 @@ h1{
     to{transform:rotate(360deg);}
 }
 
-/* 文字（極小） */
+/* 文字 */
 .card h3{
-    margin:3px 0 1px 0;
-    font-size:10px;
+    margin:6px 0 2px 0;
+    font-size:13px;
 }
 
 .card p{
     margin:0;
     color:#94a3b8;
-    font-size:9px;
+    font-size:11px;
 }
 
 /* 按鈕 */
 .button{
     display:inline-block;
-    margin-top:20px;
-    padding:10px 18px;
+    margin-top:40px;
+    padding:15px 30px;
     background:#5865F2;
     color:white;
-    border-radius:8px;
+    border-radius:12px;
     text-decoration:none;
-    font-size:14px;
+    font-size:18px;
+}
+
+.button:hover{
+    background:#4752c4;
+    transform:scale(1.05);
 }
 
 /* 標題 */
 .section-title{
     text-align:center;
-    font-size:18px;
-    margin-top:20px;
+    font-size:24px;
+    margin-top:40px;
 }
 
 /* footer */
 footer{
     text-align:center;
-    margin-top:30px;
-    padding:10px;
+    margin-top:60px;
+    padding:20px;
     color:#64748b;
-    font-size:12px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -199,11 +218,25 @@ footer{
 
 <div class="section-title">🎵 作品分享</div>
 
-<div class="grid" id="songGrid"></div>
+<div class="grid">
+
+<div class="card">
+<img src="image.png" class="vinyl-img">
+<h3>JANE DOE</h3>
+<p>米津玄師 x 宇多田ヒカル</p>
+</div>
+
+<div class="card">
+<img src="image3.png" class="vinyl-img">
+<h3>IRIS OUT</h3>
+<p>米津玄師</p>
+</div>
+
+</div>
 
 <div style="text-align:center;">
 <a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
-🎵 加入 Discord
+🎵 加入 Discord 許願唱片
 </a>
 </div>
 
@@ -220,9 +253,11 @@ const p = document.getElementById("particles");
 for(let i=0;i<80;i++){
 let dot = document.createElement("div");
 dot.className="particle";
+
 dot.style.left = Math.random()*100+"vw";
 dot.style.animationDuration = (3+Math.random()*5)+"s";
 dot.style.animationDelay = Math.random()*5+"s";
+
 p.appendChild(dot);
 }
 
@@ -231,26 +266,6 @@ const glow = document.getElementById("cursorGlow");
 document.addEventListener("mousemove",(e)=>{
 glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
-});
-
-const songs = [
-  {img:"image.png", title:"JANE DOE", artist:"米津玄師 x 宇多田ヒカル"},
-  {img:"image3.png", title:"IRIS OUT", artist:"米津玄師"}
-];
-
-const grid = document.getElementById("songGrid");
-
-songs.forEach(song=>{
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-        <img src="${song.img}" class="vinyl-img">
-        <h3>${song.title}</h3>
-        <p>${song.artist}</p>
-    `;
-
-    grid.appendChild(card);
 });
 
 </script>
