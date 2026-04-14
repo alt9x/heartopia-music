@@ -46,9 +46,9 @@ body::before{
 
 .particle{
     position:absolute;
-    width:4px;
-    height:4px;
-    background:rgba(255,255,255,0.8);
+    width:3px;
+    height:3px;
+    background:rgba(255,255,255,0.7);
     border-radius:50%;
     animation: floatUp linear infinite;
 }
@@ -62,8 +62,8 @@ body::before{
 /* 滑鼠光點 */
 #cursorGlow{
     position:fixed;
-    width:20px;
-    height:20px;
+    width:16px;
+    height:16px;
     background:rgba(88,101,242,0.8);
     border-radius:50%;
     pointer-events:none;
@@ -75,11 +75,11 @@ body::before{
 /* header */
 header{
     text-align:center;
-    padding:70px 20px 40px;
+    padding:60px 20px 30px;
 }
 
 h1{
-    font-size:42px;
+    font-size:38px;
     margin-bottom:10px;
 }
 
@@ -91,32 +91,32 @@ h1{
 .container{
     max-width:900px;
     margin:auto;
-    padding:20px;
+    padding:15px;
 }
 
-/* ⭐ GRID（已縮小） */
+/* ⭐ GRID（縮小間距 + 更密） */
 .grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap:15px;
-    margin-top:30px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap:10px;
+    margin-top:20px;
 }
 
-/* 卡片（已變緊） */
+/* 卡片（更小） */
 .card{
     background:#1e293b;
-    border-radius:14px;
-    padding:8px;
+    border-radius:12px;
+    padding:6px;
     text-align:center;
     width:100%;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
     animation: cardFloat 6s ease-in-out infinite;
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+    transform:translateY(-6px) scale(1.03);
+    box-shadow:0 15px 30px rgba(0,0,0,0.4);
 }
 
 @keyframes cardFloat{
@@ -125,18 +125,18 @@ h1{
     100%{transform:translateY(0px);}
 }
 
-/* 黑膠（縮小重點） */
+/* 黑膠（縮小） */
 .vinyl-img{
-    width:130px;
-    height:130px;
+    width:105px;
+    height:105px;
     object-fit:cover;
     border-radius:50%;
     display:block;
-    margin:6px auto;
+    margin:5px auto;
 
     box-shadow:
-        0 0 12px rgba(0,0,0,0.8),
-        0 0 18px rgba(88,101,242,0.25);
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 14px rgba(88,101,242,0.25);
 
     animation: spin 6s linear infinite;
 }
@@ -144,7 +144,7 @@ h1{
 .card:hover .vinyl-img{
     animation: spin 2.2s linear infinite;
     box-shadow:
-        0 0 25px rgba(88,101,242,0.7),
+        0 0 25px rgba(88,101,242,0.6),
         0 0 45px rgba(88,101,242,0.3);
 }
 
@@ -153,28 +153,28 @@ h1{
     to{transform:rotate(360deg);}
 }
 
-/* 文字 */
+/* 文字（縮小） */
 .card h3{
-    margin:6px 0 2px 0;
-    font-size:13px;
+    margin:5px 0 2px 0;
+    font-size:12px;
 }
 
 .card p{
     margin:0;
     color:#94a3b8;
-    font-size:11px;
+    font-size:10px;
 }
 
 /* 按鈕 */
 .button{
     display:inline-block;
-    margin-top:40px;
-    padding:15px 30px;
+    margin-top:30px;
+    padding:12px 24px;
     background:#5865F2;
     color:white;
-    border-radius:12px;
+    border-radius:10px;
     text-decoration:none;
-    font-size:18px;
+    font-size:16px;
 }
 
 .button:hover{
@@ -185,17 +185,17 @@ h1{
 /* 標題 */
 .section-title{
     text-align:center;
-    font-size:24px;
-    margin-top:40px;
+    font-size:22px;
+    margin-top:30px;
 }
 
 /* footer */
 footer{
     text-align:center;
-    margin-top:60px;
-    padding:20px;
+    margin-top:50px;
+    padding:15px;
     color:#64748b;
-    font-size:14px;
+    font-size:13px;
 }
 </style>
 </head>
