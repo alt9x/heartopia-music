@@ -46,9 +46,9 @@ body::before{
 
 .particle{
     position:absolute;
-    width:3px;
-    height:3px;
-    background:rgba(255,255,255,0.7);
+    width:2px;
+    height:2px;
+    background:rgba(255,255,255,0.6);
     border-radius:50%;
     animation: floatUp linear infinite;
 }
@@ -62,8 +62,8 @@ body::before{
 /* 滑鼠光點 */
 #cursorGlow{
     position:fixed;
-    width:16px;
-    height:16px;
+    width:14px;
+    height:14px;
     background:rgba(88,101,242,0.8);
     border-radius:50%;
     pointer-events:none;
@@ -75,77 +75,67 @@ body::before{
 /* header */
 header{
     text-align:center;
-    padding:60px 20px 30px;
+    padding:50px 20px 20px;
 }
 
 h1{
-    font-size:38px;
-    margin-bottom:10px;
+    font-size:32px;
+    margin-bottom:8px;
 }
 
 .subtitle{
     color:#94a3b8;
+    font-size:12px;
 }
 
 /* container */
 .container{
-    max-width:900px;
+    max-width:800px;
     margin:auto;
-    padding:15px;
+    padding:10px;
 }
 
-/* ⭐ GRID（縮小間距 + 更密） */
+/* ⭐ GRID（更密） */
 .grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap:10px;
-    margin-top:20px;
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    gap:8px;
+    margin-top:15px;
 }
 
-/* 卡片（更小） */
+/* 卡片（超緊湊） */
 .card{
     background:#1e293b;
-    border-radius:12px;
-    padding:6px;
+    border-radius:10px;
+    padding:4px;
     text-align:center;
-    width:100%;
-    box-shadow:0 8px 20px rgba(0,0,0,0.25);
-    animation: cardFloat 6s ease-in-out infinite;
-    transition:0.3s;
+    box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    transition:0.2s;
 }
 
 .card:hover{
-    transform:translateY(-6px) scale(1.03);
-    box-shadow:0 15px 30px rgba(0,0,0,0.4);
+    transform:scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
-@keyframes cardFloat{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-3px);}
-    100%{transform:translateY(0px);}
-}
-
-/* 黑膠（縮小） */
+/* 黑膠（核心：縮小） */
 .vinyl-img{
-    width:105px;
-    height:105px;
+    width:88px;
+    height:88px;
     object-fit:cover;
     border-radius:50%;
     display:block;
-    margin:5px auto;
+    margin:4px auto;
 
     box-shadow:
-        0 0 10px rgba(0,0,0,0.7),
-        0 0 14px rgba(88,101,242,0.25);
+        0 0 8px rgba(0,0,0,0.6),
+        0 0 12px rgba(88,101,242,0.2);
 
     animation: spin 6s linear infinite;
 }
 
 .card:hover .vinyl-img{
-    animation: spin 2.2s linear infinite;
-    box-shadow:
-        0 0 25px rgba(88,101,242,0.6),
-        0 0 45px rgba(88,101,242,0.3);
+    animation: spin 2.5s linear infinite;
 }
 
 @keyframes spin{
@@ -153,49 +143,44 @@ h1{
     to{transform:rotate(360deg);}
 }
 
-/* 文字（縮小） */
+/* 文字（極小） */
 .card h3{
-    margin:5px 0 2px 0;
-    font-size:12px;
+    margin:3px 0 1px 0;
+    font-size:10px;
 }
 
 .card p{
     margin:0;
     color:#94a3b8;
-    font-size:10px;
+    font-size:9px;
 }
 
 /* 按鈕 */
 .button{
     display:inline-block;
-    margin-top:30px;
-    padding:12px 24px;
+    margin-top:20px;
+    padding:10px 18px;
     background:#5865F2;
     color:white;
-    border-radius:10px;
+    border-radius:8px;
     text-decoration:none;
-    font-size:16px;
-}
-
-.button:hover{
-    background:#4752c4;
-    transform:scale(1.05);
+    font-size:14px;
 }
 
 /* 標題 */
 .section-title{
     text-align:center;
-    font-size:22px;
-    margin-top:30px;
+    font-size:18px;
+    margin-top:20px;
 }
 
 /* footer */
 footer{
     text-align:center;
-    margin-top:50px;
-    padding:15px;
+    margin-top:30px;
+    padding:10px;
     color:#64748b;
-    font-size:13px;
+    font-size:12px;
 }
 </style>
 </head>
@@ -218,7 +203,7 @@ footer{
 
 <div style="text-align:center;">
 <a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
-🎵 加入 Discord 許願唱片
+🎵 加入 Discord
 </a>
 </div>
 
@@ -230,21 +215,17 @@ Heartopia 唱片展示
 
 <script>
 
-/* 星星 */
 const p = document.getElementById("particles");
 
 for(let i=0;i<80;i++){
 let dot = document.createElement("div");
 dot.className="particle";
-
 dot.style.left = Math.random()*100+"vw";
 dot.style.animationDuration = (3+Math.random()*5)+"s";
 dot.style.animationDelay = Math.random()*5+"s";
-
 p.appendChild(dot);
 }
 
-/* 滑鼠光 */
 const glow = document.getElementById("cursorGlow");
 
 document.addEventListener("mousemove",(e)=>{
@@ -252,13 +233,11 @@ glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
 });
 
-/* 歌曲資料 */
 const songs = [
   {img:"image.png", title:"JANE DOE", artist:"米津玄師 x 宇多田ヒカル"},
   {img:"image3.png", title:"IRIS OUT", artist:"米津玄師"}
 ];
 
-/* 自動生成 */
 const grid = document.getElementById("songGrid");
 
 songs.forEach(song=>{
