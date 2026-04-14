@@ -72,12 +72,6 @@ body::before{
     z-index:999;
 }
 
-/* 內容 */
-body > *:not(#particles):not(#cursorGlow){
-    position:relative;
-    z-index:1;
-}
-
 /* header */
 header{
     text-align:center;
@@ -95,28 +89,27 @@ h1{
 
 /* container */
 .container{
-    max-width:1100px;
+    max-width:900px;
     margin:auto;
     padding:20px;
 }
 
-/* 🔥 卡片：縮小成專輯大小 */
+/* ⭐作品排列（重點修正） */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
     margin-top:30px;
-    justify-items:center;
 }
 
+/* 卡片 */
 .card{
     background:#1e293b;
     border-radius:16px;
     padding:10px;
     text-align:center;
-
     width:180px;
-    max-width:180px;
 
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
@@ -124,20 +117,18 @@ h1{
     transition:0.3s;
 }
 
-/* hover */
 .card:hover{
     transform:translateY(-8px) scale(1.03);
     box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* 呼吸 */
 @keyframes cardFloat{
     0%{transform:translateY(0px);}
     50%{transform:translateY(-3px);}
     100%{transform:translateY(0px);}
 }
 
-/* 🎧 黑膠（精緻化） */
+/* 黑膠 */
 .vinyl-img{
     width:150px;
     height:150px;
@@ -151,10 +142,8 @@ h1{
         0 0 18px rgba(88,101,242,0.25);
 
     animation: spin 6s linear infinite;
-    transition:0.3s;
 }
 
-/* hover 加速 + 發光 */
 .card:hover .vinyl-img{
     animation: spin 2.2s linear infinite;
     box-shadow:
@@ -162,13 +151,11 @@ h1{
         0 0 45px rgba(88,101,242,0.3);
 }
 
-/* 旋轉 */
 @keyframes spin{
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
 }
 
-/* 文字 */
 .card h3{
     margin:6px 0 2px 0;
     font-size:13px;
@@ -221,35 +208,35 @@ footer{
 <div id="cursorGlow"></div>
 
 <header>
-    <h1>Heartopia 唱片展示</h1>
-    <p class="subtitle">玩家自製唱片展示 · 免費分享 · 社群交流</p>
+<h1>Heartopia 唱片展示</h1>
+<p class="subtitle">玩家自製唱片展示 · 免費分享 · 社群交流</p>
 </header>
 
 <div class="container">
 
-    <div class="section-title">🎵 作品分享</div>
+<div class="section-title">🎵 作品分享</div>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
-            <img src="image.png" class="vinyl-img">
-            <h3>JANE DOE</h3>
-            <p>米津玄師 x 宇多田ヒカル</p>
-        </div>
+<div class="card">
+<img src="image.png" class="vinyl-img">
+<h3>JANE DOE</h3>
+<p>米津玄師 x 宇多田ヒカル</p>
+</div>
 
-         <div class="card">
-            <img src="image3.png" class="vinyl-img">
-            <h3>IRIS OUT</h3>
-            <p>米津玄師</p>
-        </div>
-        
-    </div>
+<div class="card">
+<img src="image3.png" class="vinyl-img">
+<h3>IRIS OUT</h3>
+<p>米津玄師</p>
+</div>
 
-    <div style="text-align:center;">
-        <a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
-            🎵 加入 Discord 許願唱片
-        </a>
-    </div>
+</div>
+
+<div style="text-align:center;">
+<a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
+🎵 加入 Discord 許願唱片
+</a>
+</div>
 
 </div>
 
@@ -262,21 +249,21 @@ Heartopia 唱片展示
 const p = document.getElementById("particles");
 
 for(let i=0;i<80;i++){
-    let dot = document.createElement("div");
-    dot.className="particle";
+let dot = document.createElement("div");
+dot.className="particle";
 
-    dot.style.left = Math.random()*100+"vw";
-    dot.style.animationDuration = (3+Math.random()*5)+"s";
-    dot.style.animationDelay = Math.random()*5+"s";
+dot.style.left = Math.random()*100+"vw";
+dot.style.animationDuration = (3+Math.random()*5)+"s";
+dot.style.animationDelay = Math.random()*5+"s";
 
-    p.appendChild(dot);
+p.appendChild(dot);
 }
 
 const glow = document.getElementById("cursorGlow");
 
 document.addEventListener("mousemove",(e)=>{
-    glow.style.left = e.clientX+"px";
-    glow.style.top = e.clientY+"px";
+glow.style.left = e.clientX+"px";
+glow.style.top = e.clientY+"px";
 });
 
 </script>
