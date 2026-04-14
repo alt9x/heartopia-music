@@ -94,11 +94,10 @@ h1{
     padding:20px;
 }
 
-/* ⭐作品排列修正 */
+/* ⭐ GRID升級（重點） */
 .grid{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap:25px;
     margin-top:30px;
 }
@@ -109,11 +108,8 @@ h1{
     border-radius:16px;
     padding:10px;
     text-align:center;
-
-    width:180px;
-
+    width:100%;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
-
     animation: cardFloat 6s ease-in-out infinite;
     transition:0.3s;
 }
@@ -218,21 +214,7 @@ footer{
 
 <div class="section-title">🎵 作品分享</div>
 
-<div class="grid">
-
-<div class="card">
-<img src="image.png" class="vinyl-img">
-<h3>JANE DOE</h3>
-<p>米津玄師 x 宇多田ヒカル</p>
-</div>
-
-<div class="card">
-<img src="image3.png" class="vinyl-img">
-<h3>IRIS OUT</h3>
-<p>米津玄師</p>
-</div>
-
-</div>
+<div class="grid" id="songGrid"></div>
 
 <div style="text-align:center;">
 <a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
@@ -248,6 +230,7 @@ Heartopia 唱片展示
 
 <script>
 
+/* ⭐ 星星 */
 const p = document.getElementById("particles");
 
 for(let i=0;i<80;i++){
@@ -261,11 +244,34 @@ dot.style.animationDelay = Math.random()*5+"s";
 p.appendChild(dot);
 }
 
+/* ⭐ 滑鼠光 */
 const glow = document.getElementById("cursorGlow");
 
 document.addEventListener("mousemove",(e)=>{
 glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
+});
+
+/* ⭐ 歌曲資料（重點） */
+const songs = [
+  {img:"image.png", title:"JANE DOE", artist:"米津玄師 x 宇多田ヒカル"},
+  {img:"image3.png", title:"IRIS OUT", artist:"米津玄師"}
+];
+
+/* ⭐ 自動生成卡片 */
+const grid = document.getElementById("songGrid");
+
+songs.forEach(song=>{
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <img src="${song.img}" class="vinyl-img">
+        <h3>${song.title}</h3>
+        <p>${song.artist}</p>
+    `;
+
+    grid.appendChild(card);
 });
 
 </script>
