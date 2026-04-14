@@ -94,19 +94,19 @@ h1{
     padding:20px;
 }
 
-/* ⭐ GRID升級（重點） */
+/* ⭐ GRID（已縮小） */
 .grid{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap:25px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap:15px;
     margin-top:30px;
 }
 
-/* 卡片 */
+/* 卡片（已變緊） */
 .card{
     background:#1e293b;
-    border-radius:16px;
-    padding:10px;
+    border-radius:14px;
+    padding:8px;
     text-align:center;
     width:100%;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
@@ -125,14 +125,14 @@ h1{
     100%{transform:translateY(0px);}
 }
 
-/* 黑膠 */
+/* 黑膠（縮小重點） */
 .vinyl-img{
-    width:150px;
-    height:150px;
+    width:130px;
+    height:130px;
     object-fit:cover;
     border-radius:50%;
     display:block;
-    margin:8px auto;
+    margin:6px auto;
 
     box-shadow:
         0 0 12px rgba(0,0,0,0.8),
@@ -230,7 +230,7 @@ Heartopia 唱片展示
 
 <script>
 
-/* ⭐ 星星 */
+/* 星星 */
 const p = document.getElementById("particles");
 
 for(let i=0;i<80;i++){
@@ -244,7 +244,7 @@ dot.style.animationDelay = Math.random()*5+"s";
 p.appendChild(dot);
 }
 
-/* ⭐ 滑鼠光 */
+/* 滑鼠光 */
 const glow = document.getElementById("cursorGlow");
 
 document.addEventListener("mousemove",(e)=>{
@@ -252,13 +252,13 @@ glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
 });
 
-/* ⭐ 歌曲資料（重點） */
+/* 歌曲資料 */
 const songs = [
   {img:"image.png", title:"JANE DOE", artist:"米津玄師 x 宇多田ヒカル"},
   {img:"image3.png", title:"IRIS OUT", artist:"米津玄師"}
 ];
 
-/* ⭐ 自動生成卡片 */
+/* 自動生成 */
 const grid = document.getElementById("songGrid");
 
 songs.forEach(song=>{
