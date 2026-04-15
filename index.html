@@ -14,7 +14,7 @@ body{
     overflow-x:hidden;
 }
 
-/* ===== 背景（更乾淨 csiefly 風） ===== */
+/* ===== 背景 ===== */
 body::before{
     content:"";
     position:fixed;
@@ -24,7 +24,7 @@ body::before{
     z-index:-3;
 }
 
-/* 星空（簡化） */
+/* 星空 */
 #particles{
     position:fixed;
     inset:0;
@@ -48,7 +48,7 @@ body::before{
     100%{transform:translateY(-10vh);opacity:0;}
 }
 
-/* ===== cursor glow（弱化） ===== */
+/* cursor glow */
 #cursorGlow{
     position:fixed;
     width:18px;
@@ -62,7 +62,7 @@ body::before{
     z-index:999;
 }
 
-/* ===== header ===== */
+/* header */
 header{
     text-align:center;
     padding:70px 20px 30px;
@@ -71,22 +71,20 @@ header{
 h1{
     font-size:44px;
     font-weight:700;
-    letter-spacing:1px;
 }
 
 .subtitle{
     color:#94a3b8;
-    margin-top:8px;
 }
 
-/* ===== container ===== */
+/* container */
 .container{
     max-width:1100px;
     margin:auto;
     padding:20px;
 }
 
-/* ===== grid（更乾淨 spacing） ===== */
+/* grid */
 .grid{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
@@ -94,7 +92,7 @@ h1{
     margin-top:30px;
 }
 
-/* ===== card（csiefly 核心） ===== */
+/* card */
 .card{
     background:rgba(255,255,255,0.04);
     border:1px solid rgba(255,255,255,0.08);
@@ -108,26 +106,49 @@ h1{
 .card:hover{
     transform:translateY(-6px);
     border-color:rgba(255,255,255,0.2);
-    background:rgba(255,255,255,0.06);
 }
 
-/* ===== 黑膠（統一專業比例） ===== */
+/* ===== 黑膠（最終版） ===== */
 .vinyl{
     width:150px;
     height:150px;
     margin:10px auto 14px auto;
     border-radius:50%;
-    overflow:hidden;
     position:relative;
+    overflow:hidden;
+    background:#000;
 }
 
-/* 圖片（乾淨版） */
+/* 圖片 */
 .vinyl img{
-    width:100%;
-    height:100%;
+    width:110%;
+    height:110%;
     object-fit:cover;
-    border-radius:50%;
+    position:absolute;
+    top:-5%;
+    left:-5%;
     animation: spin 10s linear infinite;
+}
+
+/* 黑膠紋路 + 中心光影（無洞） */
+.vinyl::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at center,
+            rgba(255,255,255,0.06) 0%,
+            transparent 30%
+        ),
+        repeating-radial-gradient(
+            circle,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    pointer-events:none;
 }
 
 /* 旋轉 */
@@ -136,11 +157,10 @@ h1{
     to{transform:rotate(360deg);}
 }
 
-/* ===== text ===== */
+/* text */
 .card h3{
     margin:10px 0 4px;
     font-size:13px;
-    letter-spacing:0.5px;
 }
 
 .card p{
@@ -149,7 +169,7 @@ h1{
     color:#94a3b8;
 }
 
-/* ===== button（更極簡） ===== */
+/* button */
 .button{
     display:inline-block;
     margin-top:50px;
@@ -159,7 +179,6 @@ h1{
     color:white;
     border-radius:12px;
     text-decoration:none;
-    transition:0.3s;
 }
 
 .button:hover{
@@ -179,18 +198,12 @@ footer{
     margin-top:70px;
     padding:20px;
     color:#64748b;
-    font-size:13px;
 }
 
-/* ===== mobile ===== */
+/* mobile */
 @media (max-width:768px){
 .grid{
     grid-template-columns: repeat(2, 1fr);
-    gap:14px;
-}
-
-h1{
-    font-size:30px;
 }
 
 .vinyl{
@@ -219,7 +232,7 @@ h1{
 
 <div class="card">
 <div class="vinyl">
-    <img src="vinyl_cut_1.png">
+<img src="vinyl_cut_1.png">
 </div>
 <h3>JANE DOE</h3>
 <p>米津玄師 x 宇多田ヒカル</p>
@@ -227,7 +240,7 @@ h1{
 
 <div class="card">
 <div class="vinyl">
-    <img src="image3.png">
+<img src="vinyl_cut_2.png">
 </div>
 <h3>IRIS OUT</h3>
 <p>米津玄師</p>
@@ -235,7 +248,7 @@ h1{
 
 <div class="card">
 <div class="vinyl">
-    <img src="skytree.png">
+<img src="vinyl_cut_3.png">
 </div>
 <h3>天空之城</h3>
 <p>久石讓</p>
@@ -243,7 +256,7 @@ h1{
 
 <div class="card">
 <div class="vinyl">
-    <img src="iu.png">
+<img src="vinyl_cut_4.png">
 </div>
 <h3>Celebrity</h3>
 <p>IU</p>
