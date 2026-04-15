@@ -128,7 +128,7 @@ h1{
     100%{transform:translateY(0px);}
 }
 
-/* 黑膠 */
+/* 黑膠（已刪除旋轉） */
 .vinyl-img{
     width:150px;
     height:150px;
@@ -141,16 +141,7 @@ h1{
         0 0 12px rgba(0,0,0,0.8),
         0 0 18px rgba(88,101,242,0.25);
 
-    animation: spin 6s linear infinite;
-}
-
-.card:hover .vinyl-img{
-    animation: spin 2.2s linear infinite;
-}
-
-@keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+    animation: none !important;
 }
 
 /* 文字 */
@@ -200,7 +191,7 @@ footer{
 }
 
 /* ===================== */
-/* 📱 手機 RWD（重點） */
+/* 📱 手機 RWD */
 /* ===================== */
 @media (max-width:768px){
 
@@ -220,19 +211,16 @@ h1{
     gap:12px;
 }
 
-/* 卡片自動縮放 */
 .card{
     width:42vw;
     padding:8px;
 }
 
-/* 黑膠縮小 */
 .vinyl-img{
     width:100px;
     height:100px;
 }
 
-/* 字縮小 */
 .card h3{
     font-size:11px;
 }
@@ -241,13 +229,11 @@ h1{
     font-size:10px;
 }
 
-/* 按鈕 */
 .button{
     font-size:16px;
     padding:12px 20px;
 }
 
-/* 關掉滑鼠特效 */
 #cursorGlow{
     display:none;
 }
@@ -320,7 +306,6 @@ glow.style.left = e.clientX+"px";
 glow.style.top = e.clientY+"px";
 });
 
-/* 手機關閉光點 */
 if(window.innerWidth < 768){
 document.getElementById("cursorGlow").style.display="none";
 }
