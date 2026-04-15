@@ -94,22 +94,26 @@ h1{
     padding:20px;
 }
 
-/* ⭐ 一排 5 個 */
+/* ⭐ 5個一排 + 不黏 */
 .grid{
     display:grid;
     grid-template-columns: repeat(5, 1fr);
-    gap:20px;
+    gap:28px;
     margin-top:30px;
+    padding:20px;
+    box-sizing:border-box;
 }
 
 /* 卡片 */
 .card{
     background:#1e293b;
     border-radius:16px;
-    padding:10px;
+    padding:14px;
     text-align:center;
 
     width:100%;
+    box-sizing:border-box;
+
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
 
     animation: cardFloat 6s ease-in-out infinite;
@@ -139,9 +143,11 @@ h1{
     box-shadow:
         0 0 12px rgba(0,0,0,0.8),
         0 0 18px rgba(88,101,242,0.25);
+
+    animation: none !important;
 }
 
-/* ⭐ 文字間距加大 */
+/* 文字間距 */
 .card h3{
     margin:12px 0 6px 0;
     font-size:13px;
@@ -189,9 +195,9 @@ footer{
 
 /* 📱 手機 */
 @media (max-width:768px){
-
 .grid{
     grid-template-columns: repeat(2, 1fr);
+    gap:16px;
 }
 
 h1{
