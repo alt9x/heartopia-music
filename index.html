@@ -107,7 +107,7 @@ h1{
     border-color:rgba(255,255,255,0.2);
 }
 
-/* 💿 黑膠（已修正版） */
+/* 💿 黑膠（修正版） */
 .vinyl{
     width:150px;
     height:150px;
@@ -121,13 +121,17 @@ h1{
     box-shadow:
         inset 0 0 25px rgba(0,0,0,0.95),
         0 8px 20px rgba(0,0,0,0.5);
+
+    /* ⭐ 旋轉在這裡 */
+    animation: spin 8s linear infinite;
 }
 
-/* 圖片（中間封面） */
+/* 中間圖片（封面） */
 .vinyl img{
-    width:70%;
-    height:70%;
+    width:65%;
+    height:65%;
     object-fit:cover;
+
     position:absolute;
     top:50%;
     left:50%;
@@ -155,18 +159,12 @@ h1{
     pointer-events:none;
 }
 
-/* 中心點（唱片軸） */
-.vinyl::after{
-    content:"";
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:#111;
-    border-radius:50%;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 5px rgba(0,0,0,0.8);
+/* ❌ 已移除中心孔（你不要的） */
+
+/* 旋轉動畫 */
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
 }
 
 /* text */
