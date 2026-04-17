@@ -107,7 +107,7 @@ h1{
     border-color:rgba(255,255,255,0.2);
 }
 
-/* 💿 黑膠 */
+/* 💿 黑膠（已修正版） */
 .vinyl{
     width:150px;
     height:150px;
@@ -115,18 +115,24 @@ h1{
     border-radius:50%;
     position:relative;
     overflow:hidden;
-    background:#000;
+
+    background: radial-gradient(circle at 30% 30%, #222, #000);
 
     box-shadow:
-        inset 0 0 18px rgba(0,0,0,0.95),
-        0 0 10px rgba(0,0,0,0.4);
+        inset 0 0 25px rgba(0,0,0,0.95),
+        0 8px 20px rgba(0,0,0,0.5);
 }
 
+/* 圖片（中間封面） */
 .vinyl img{
-    width:100%;
-    height:100%;
+    width:70%;
+    height:70%;
     object-fit:cover;
-    animation: spin 10s linear infinite;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
 }
 
 /* 黑膠紋路 */
@@ -137,25 +143,30 @@ h1{
     border-radius:50%;
 
     background:
-        radial-gradient(circle at center,
-            rgba(0,0,0,0.15) 0%,
-            rgba(0,0,0,0.6) 60%,
-            rgba(0,0,0,0.85) 100%
-        ),
         repeating-radial-gradient(
             circle,
-            rgba(255,255,255,0.04) 0px,
-            rgba(255,255,255,0.04) 1px,
-            transparent 2px,
-            transparent 4px
+            rgba(255,255,255,0.05) 0px,
+            rgba(255,255,255,0.03) 2px,
+            transparent 3px,
+            transparent 5px
         );
 
+    opacity:0.6;
     pointer-events:none;
 }
 
-@keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+/* 中心點（唱片軸） */
+.vinyl::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:#111;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 5px rgba(0,0,0,0.8);
 }
 
 /* text */
