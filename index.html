@@ -1,63 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartopia</title>
+
 <style>
-
-/* ===== 黑膠（真正好看版本） ===== */
-.vinyl{
-    width:150px;
-    height:150px;
-    margin:10px auto 14px;
-    border-radius:50%;
-    position:relative;
-    overflow:hidden;
-    background:#000;
-
-    /* 黑膠深度感 */
-    box-shadow:
-        inset 0 0 18px rgba(0,0,0,0.95),
-        0 0 8px rgba(0,0,0,0.5);
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0b1220;
+    color:white;
 }
 
-/* 圖片：關鍵修正 */
+/* 標題 */
+header{
+    text-align:center;
+    padding:50px 20px 10px;
+}
+
+h1{
+    font-size:40px;
+    margin:0;
+}
+
+/* 作品牆（csiefly核心） */
+.grid{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+    padding:20px;
+}
+
+/* 卡片 */
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:15px;
+    text-align:center;
+    transition:0.2s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* 🎧 黑膠（穩定版） */
+.vinyl{
+    width:140px;
+    height:140px;
+    margin:auto;
+    border-radius:50%;
+    overflow:hidden;
+    background:black;
+    position:relative;
+}
+
+/* 圖片 */
 .vinyl img{
-    width:115%;
-    height:115%;
+    width:100%;
+    height:100%;
     object-fit:cover;
-
-    position:absolute;
-    top:-7.5%;
-    left:-7.5%;
-
-    animation: spin 10s linear infinite;
-
-    /* ⭐關鍵：柔邊（不要 clip-path） */
-    -webkit-mask-image: radial-gradient(circle, white 92%, transparent 100%);
-    mask-image: radial-gradient(circle, white 92%, transparent 100%);
+    animation:spin 10s linear infinite;
 }
 
 /* 黑膠紋路 */
-.vinyl::before{
+.vinyl::after{
     content:"";
     position:absolute;
     inset:0;
     border-radius:50%;
     background:
         radial-gradient(circle at center,
-            rgba(255,255,255,0.05) 0%,
-            transparent 40%
-        ),
+            rgba(255,255,255,0.05),
+            transparent 40%),
         repeating-radial-gradient(
             circle,
-            rgba(255,255,255,0.04) 0px,
-            rgba(255,255,255,0.04) 1px,
-            transparent 1px,
-            transparent 3px
+            rgba(255,255,255,0.03) 0px,
+            rgba(255,255,255,0.03) 1px,
+            transparent 2px,
+            transparent 4px
         );
     pointer-events:none;
 }
 
-/* 旋轉 */
 @keyframes spin{
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
 }
 
+/* 文字 */
+.card p{
+    margin:10px 0 0;
+    font-size:13px;
+    color:#cbd5e1;
+}
 </style>
+</head>
+
+<body>
+
+<header>
+<h1>Heartopia 唱片展示</h1>
+<p>簡潔作品展示</p>
+</header>
+
+<div class="grid">
+
+<div class="card">
+    <div class="vinyl">
+        <img src="vinyl_cut_1.png">
+    </div>
+    <p>作品 1</p>
+</div>
+
+<div class="card">
+    <div class="vinyl">
+        <img src="vinyl_cut_2.png">
+    </div>
+    <p>作品 2</p>
+</div>
+
+<div class="card">
+    <div class="vinyl">
+        <img src="IMG_3635.jpg">
+    </div>
+    <p>作品 3</p>
+</div>
+
+</div>
+
+</body>
+</html>
