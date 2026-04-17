@@ -3,35 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heartopia Music</title>
-<link rel="stylesheet" href="style.css">
+<title>Heartopia 唱片展示</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0b1220;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* 背景 */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background: radial-gradient(circle at top,#1e3a8a33,transparent 60%),
+                radial-gradient(circle at bottom,#9333ea22,transparent 60%);
+    z-index:-3;
+}
+
+/* 星空 */
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+}
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    opacity:0.6;
+    border-radius:50%;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(100vh);opacity:0;}
+    20%{opacity:0.8;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* cursor glow */
+#cursorGlow{
+    position:fixed;
+    width:18px;
+    height:18px;
+    background:#60a5fa;
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    filter:blur(10px);
+    opacity:0.6;
+    z-index:999;
+}
+
+/* header */
+header{
+    text-align:center;
+    padding:70px 20px 30px;
+}
+
+h1{
+    font-size:44px;
+}
+
+.subtitle{
+    color:#94a3b8;
+}
+
+/* container */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+/* grid */
+.grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:20px;
+    margin-top:30px;
+}
+
+/* card */
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:18px;
+    text-align:center;
+    backdrop-filter: blur(12px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,255,255,0.2);
+}
+
+/* ===== 黑膠（終極無白邊） ===== */
+.vinyl{
+    width:150px;
+    height:150px;
+    margin:10px auto 14px;
+    border-radius:50%;
+    position:relative;
+    overflow:hidden;
+    background:#000;
+
+    /* ⭐吃掉邊緣白光 */
+    box-shadow: inset 0 0 12px rgba(0,0,0,0.95);
+}
+
+/* 圖片（關鍵） */
+.vinyl img{
+    width:115%;
+    height:115%;
+    object-fit:cover;
+    position:absolute;
+    top:-7.5%;
+    left:-7.5%;
+
+    animation: spin 10s linear infinite;
+
+    /* ⭐真正解決白邊 */
+    -webkit-mask-image: radial-gradient(circle, white 98%, transparent 100%);
+    mask-image: radial-gradient(circle, white 98%, transparent 100%);
+}
+
+/* 黑膠紋路 */
+.vinyl::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:
+        radial-gradient(circle at center,
+            rgba(255,255,255,0.05) 0%,
+            transparent 35%
+        ),
+        repeating-radial-gradient(
+            circle,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+    pointer-events:none;
+}
+
+/* 旋轉 */
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* text */
+.card h3{
+    margin:10px 0 4px;
+    font-size:13px;
+}
+
+.card p{
+    margin:0;
+    font-size:11px;
+    color:#94a3b8;
+}
+
+/* button */
+.button{
+    display:inline-block;
+    margin-top:50px;
+    padding:14px 26px;
+    background:rgba(96,165,250,0.15);
+    border:1px solid rgba(96,165,250,0.4);
+    color:white;
+    border-radius:12px;
+    text-decoration:none;
+}
+
+.button:hover{
+    background:rgba(96,165,250,0.25);
+    transform:scale(1.05);
+}
+
+.section-title{
+    text-align:center;
+    font-size:22px;
+    margin-top:40px;
+    color:#cbd5e1;
+}
+
+footer{
+    text-align:center;
+    margin-top:70px;
+    padding:20px;
+    color:#64748b;
+}
+
+/* mobile */
+@media (max-width:768px){
+.grid{
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.vinyl{
+    width:120px;
+    height:120px;
+}
+}
+</style>
 </head>
 
 <body>
 
+<div id="particles"></div>
+<div id="cursorGlow"></div>
+
 <header>
-    <h1>Heartopia 音樂作品</h1>
-    <p>作品展示</p>
+<h1>Heartopia 唱片展示</h1>
+<p class="subtitle">玩家自製唱片展示 · 免費分享 · 社群交流</p>
 </header>
+
+<div class="container">
+
+<div class="section-title">🎵 作品分享</div>
 
 <div class="grid">
 
-    <div class="card">
-        <img src="img/IRIS_OUT.png" alt="">
-        <p>米津玄師 IRIS OUT</p>
-    </div>
+<div class="card">
+<div class="vinyl">
+<img src="vinyl_cut_1.png">
+</div>
+<h3>JANE DOE</h3>
+<p>米津玄師 x 宇多田ヒカル</p>
+</div>
 
-    <div class="card">
-        <img src="img/IU_Celebrity.png" alt="">
-        <p>IU Celebrity</p>
-    </div>
+<div class="card">
+<div class="vinyl">
+<img src="vinyl_cut_2.png">
+</div>
+<h3>IRIS OUT</h3>
+<p>米津玄師</p>
+</div>
 
-    <div class="card">
-        <img src="img/天空之城.png" alt="">
-        <p>久石讓 天空之城</p>
-    </div>
+<div class="card">
+<div class="vinyl">
+<img src="vinyl_cut_3.png">
+</div>
+<h3>天空之城</h3>
+<p>久石讓</p>
+</div>
+
+<div class="card">
+<div class="vinyl">
+<img src="vinyl_cut_4.png">
+</div>
+<h3>Celebrity</h3>
+<p>IU</p>
+</div>
 
 </div>
+
+<div style="text-align:center;">
+<a class="button" href="https://discord.gg/ceEKXFwq2m" target="_blank">
+🎵 加入 Discord 許願唱片
+</a>
+</div>
+
+</div>
+
+<footer>
+Heartopia 唱片展示
+</footer>
+
+<script>
+const p = document.getElementById("particles");
+
+for(let i=0;i<50;i++){
+let dot = document.createElement("div");
+dot.className="particle";
+
+dot.style.left = Math.random()*100+"vw";
+dot.style.animationDuration = (4+Math.random()*6)+"s";
+dot.style.animationDelay = Math.random()*5+"s";
+
+p.appendChild(dot);
+}
+
+const glow = document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove",(e)=>{
+glow.style.left = e.clientX+"px";
+glow.style.top = e.clientY+"px";
+});
+
+if(window.innerWidth < 768){
+document.getElementById("cursorGlow").style.display="none";
+}
+</script>
 
 </body>
 </html>
